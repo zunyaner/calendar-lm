@@ -6942,13 +6942,13 @@
       "thumb_out": "thumb-12.webp"
     },
     {
-      "id": "13",
+      "id": "15",
       "month": "2027-01",
-      "out": "hero-13.webp",
-      "month_out": "card-13.webp",
+      "out": "hero-15.webp",
+      "month_out": "card-15.webp",
       "object_pos": "center",
-      "month_pos": "center 28%",
-      "thumb_out": "thumb-13.webp"
+      "month_pos": "center",
+      "thumb_out": "thumb-15.webp"
     },
     {
       "id": "02",
