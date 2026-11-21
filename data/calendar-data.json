@@ -6993,7 +6993,7 @@
       "out": "hero-08.webp",
       "month_out": "card-08.webp",
       "object_pos": "center",
-      "month_pos": "center center",
+      "month_pos": "center",
       "thumb_out": "thumb-08.webp"
     },
     {
@@ -7029,7 +7029,7 @@
       "out": "hero-04.webp",
       "month_out": "card-04.webp",
       "object_pos": "center",
-      "month_pos": "center 40%",
+      "month_pos": "center",
       "thumb_out": "thumb-04.webp"
     },
     {
