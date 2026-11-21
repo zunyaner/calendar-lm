@@ -1,14 +1,14 @@
 /* 锁屏壁纸预览 — 橹穆 */
 :root {
-  --red: #5C6B98;
-  --red-soft: #6E6A94;
+  --red: #6FB1E0;
+  --red-soft: #F29BB8;
   --safe-top: env(safe-area-inset-top, 0px);
   --safe-bottom: env(safe-area-inset-bottom, 0px);
 }
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 html, body {
   margin: 0; padding: 0; height: 100%;
-  background: #16141E; color: #fff;
+  background: #1A3A58; color: #fff;
   font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB",
     "Noto Sans SC", "Microsoft YaHei", sans-serif;
   overflow: hidden;
@@ -16,7 +16,7 @@ html, body {
 #stage {
   position: fixed; inset: 0;
   overflow: hidden;
-  background: #16141E;
+  background: #1A3A58;
 }
 .bg {
   position: absolute; inset: 0;
@@ -32,12 +32,12 @@ html, body {
   pointer-events: none;
   background:
     linear-gradient(180deg,
-      rgba(22, 20, 36, 0.28) 0%,
-      rgba(22, 20, 36, 0.06) 14%,
-      rgba(22, 20, 36, 0.10) 26%,
-      rgba(22, 20, 36, 0.38) 48%,
-      rgba(22, 20, 36, 0.62) 78%,
-      rgba(22, 20, 36, 0.78) 100%);
+      rgba(26, 58, 88, 0.28) 0%,
+      rgba(26, 58, 88, 0.06) 14%,
+      rgba(26, 58, 88, 0.10) 26%,
+      rgba(26, 58, 88, 0.38) 48%,
+      rgba(43, 40, 70, 0.45) 78%,
+      rgba(43, 40, 70, 0.62) 100%);
 }
 .content {
   position: relative;
@@ -80,7 +80,7 @@ html, body {
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.06em;
-  background: rgba(92, 107, 152, 0.72);
+  background: linear-gradient(120deg, rgba(111, 177, 224, 0.82), rgba(242, 155, 184, 0.82));
   border: 1px solid rgba(255, 255, 255, 0.28);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -93,9 +93,9 @@ html, body {
   margin-bottom: 8px;
   padding: 20px 22px 18px;
   border-radius: 20px;
-  background: rgba(244, 235, 245, 0.18);
-  border: 1px solid rgba(232, 210, 224, 0.42);
-  box-shadow: 0 10px 30px rgba(58, 54, 80, 0.28);
+  background: linear-gradient(135deg, rgba(142, 197, 232, 0.32), rgba(245, 184, 204, 0.36));
+  border: 1px solid rgba(245, 184, 204, 0.55);
+  box-shadow: 0 10px 30px rgba(43, 74, 111, 0.28);
   backdrop-filter: blur(22px);
   -webkit-backdrop-filter: blur(22px);
   cursor: default;
@@ -148,7 +148,7 @@ html, body {
   text-align: center;
   text-decoration: none;
   color: #fff;
-  background: rgba(30, 28, 42, 0.55);
+  background: linear-gradient(120deg, rgba(111, 177, 224, 0.72), rgba(242, 155, 184, 0.72));
   border: 1px solid rgba(255, 255, 255, 0.28);
   border-radius: 999px;
   padding: 10px 8px;
@@ -159,4 +159,4 @@ html, body {
   cursor: default;
 }
 .toolbar .bar button:active,
-.toolbar .bar a:active { background: rgba(92, 107, 152, 0.75); }
+.toolbar .bar a:active { filter: brightness(1.08); background: linear-gradient(120deg, rgba(111, 177, 224, 0.88), rgba(242, 155, 184, 0.88)); }

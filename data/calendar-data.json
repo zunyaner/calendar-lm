@@ -26,21 +26,21 @@
     },
     "countsMatch": true,
     "theme": "lu-mu-blue-pink",
-    "paletteNote": "主题色用雾蓝偏紫 #5C6B98，点缀浅玫瑰粉 #C9A3B5。顶栏是雾蓝到浅紫的渐变，白字对比度足够；背景是偏冷的淡蓝粉。",
+    "paletteNote": "主题色是明显的蓝粉色：主色用明亮天蓝 #6FB1E0 / #8EC5E8，强调色用婴儿粉 #F29BB8 / #F5B8CC。页面背景上浅蓝、下浅粉，顶栏也是蓝粉渐变。",
     "photoNote": "图片由你提供，仅供个人使用。"
   },
   "colors": {
-    "accent": "#5C6B98",
-    "coral": "#5C6B98",
-    "coralDark": "#4A5780",
-    "peach": "#C9A3B5",
-    "bg": "#F4F3F8",
+    "accent": "#6FB1E0",
+    "coral": "#6FB1E0",
+    "coralDark": "#2F6FA0",
+    "peach": "#F29BB8",
+    "bg": "#D4EEFB",
     "国定": "#FFE97F",
     "休": "#FDE2E2",
     "年休": "#C6E0B4",
-    "班": "#E0E4F0",
-    "今天": "#F4D2DA",
-    "周末": "#F4E8EE"
+    "班": "#D4EAF8",
+    "今天": "#F5B8CC",
+    "周末": "#FDE4EE"
   },
   "quotes": [
     {
