@@ -98,7 +98,7 @@ html, body {
   box-shadow: 0 10px 30px rgba(43, 74, 111, 0.28);
   backdrop-filter: blur(22px);
   -webkit-backdrop-filter: blur(22px);
-  cursor: default;
+  cursor: pointer;
 }
 .lyric-line {
   margin: 0;
@@ -107,6 +107,8 @@ html, body {
   line-height: 1.45;
   letter-spacing: 0.05em;
   text-shadow: 0 2px 16px rgba(0, 0, 0, 0.35);
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 .lyric-from {
   margin: 12px 0 0;

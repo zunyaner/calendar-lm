@@ -165,6 +165,9 @@ a { color: var(--coral-dark); }
   font-size: 13px;
   line-height: 1.55;
   color: var(--text);
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  cursor: pointer;
 }
 .quote em { font-style: normal; color: var(--muted); font-size: 12px; }
 .actions {
