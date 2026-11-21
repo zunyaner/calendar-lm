@@ -6930,7 +6930,8 @@
       "month_out": "card-01.webp",
       "object_pos": "center",
       "month_pos": "center 40%",
-      "thumb_out": "thumb-01.webp"
+      "thumb_out": "thumb-01.webp",
+      "year_out": "year-01.webp"
     },
     {
       "id": "12",
@@ -6939,7 +6940,8 @@
       "month_out": "card-12.webp",
       "object_pos": "center",
       "month_pos": "center 36%",
-      "thumb_out": "thumb-12.webp"
+      "thumb_out": "thumb-12.webp",
+      "year_out": "year-12.webp"
     },
     {
       "id": "16",
@@ -6948,7 +6950,8 @@
       "month_out": "card-16.webp",
       "object_pos": "center",
       "month_pos": "center",
-      "thumb_out": "thumb-16.webp"
+      "thumb_out": "thumb-16.webp",
+      "year_out": "year-16.webp"
     },
     {
       "id": "02",
@@ -6958,7 +6961,8 @@
       "object_pos": "center",
       "month_pos": "center center",
       "hero_out": "hero-03.webp",
-      "thumb_out": "thumb-02.webp"
+      "thumb_out": "thumb-02.webp",
+      "year_out": "year-02.webp"
     },
     {
       "id": "14",
@@ -6967,7 +6971,8 @@
       "month_out": "card-14.webp",
       "object_pos": "center",
       "month_pos": "center 40%",
-      "thumb_out": "thumb-14.webp"
+      "thumb_out": "thumb-14.webp",
+      "year_out": "year-14.webp"
     },
     {
       "id": "03",
@@ -6976,7 +6981,8 @@
       "month_out": "card-03.webp",
       "object_pos": "center",
       "month_pos": "center 28%",
-      "thumb_out": "thumb-03.webp"
+      "thumb_out": "thumb-03.webp",
+      "year_out": "year-03.webp"
     },
     {
       "id": "07",
@@ -6985,7 +6991,8 @@
       "month_out": "card-07.webp",
       "object_pos": "center",
       "month_pos": "center 28%",
-      "thumb_out": "thumb-07.webp"
+      "thumb_out": "thumb-07.webp",
+      "year_out": "year-07.webp"
     },
     {
       "id": "08",
@@ -6994,7 +7001,8 @@
       "month_out": "card-08.webp",
       "object_pos": "center",
       "month_pos": "center",
-      "thumb_out": "thumb-08.webp"
+      "thumb_out": "thumb-08.webp",
+      "year_out": "year-08.webp"
     },
     {
       "id": "10",
@@ -7003,7 +7011,8 @@
       "month_out": "card-10.webp",
       "object_pos": "center",
       "month_pos": "center 40%",
-      "thumb_out": "thumb-10.webp"
+      "thumb_out": "thumb-10.webp",
+      "year_out": "year-10.webp"
     },
     {
       "id": "11",
@@ -7012,7 +7021,8 @@
       "month_out": "card-11.webp",
       "object_pos": "center",
       "month_pos": "center 28%",
-      "thumb_out": "thumb-11.webp"
+      "thumb_out": "thumb-11.webp",
+      "year_out": "year-11.webp"
     },
     {
       "id": "09",
@@ -7021,7 +7031,8 @@
       "month_out": "card-09.webp",
       "object_pos": "center",
       "month_pos": "center 28%",
-      "thumb_out": "thumb-09.webp"
+      "thumb_out": "thumb-09.webp",
+      "year_out": "year-09.webp"
     },
     {
       "id": "04",
@@ -7030,7 +7041,8 @@
       "month_out": "card-04.webp",
       "object_pos": "center",
       "month_pos": "center",
-      "thumb_out": "thumb-04.webp"
+      "thumb_out": "thumb-04.webp",
+      "year_out": "year-04.webp"
     },
     {
       "id": "05",
@@ -7039,7 +7051,8 @@
       "month_out": "card-05.webp",
       "object_pos": "center",
       "month_pos": "center 40%",
-      "thumb_out": "thumb-05.webp"
+      "thumb_out": "thumb-05.webp",
+      "year_out": "year-05.webp"
     },
     {
       "id": "06",
@@ -7048,7 +7061,8 @@
       "month_out": "card-06.webp",
       "object_pos": "center",
       "month_pos": "center 40%",
-      "thumb_out": "thumb-06.webp"
+      "thumb_out": "thumb-06.webp",
+      "year_out": "year-06.webp"
     }
   ],
   "specialDates": [

@@ -317,6 +317,7 @@
   function photoFile(ph, kind) {
     if (!ph) return "";
     if (kind === "hero") return ph.hero_out || ph.out;
+    if (kind === "year") return ph.year_out || ph.thumb_out || ph.month_out || ph.out;
     if (kind === "thumb") return ph.thumb_out || ph.month_out || ph.out;
     return ph.month_out || ph.out;
   }
@@ -324,7 +325,7 @@
     const ph = monthPhoto(y, m);
     if (!ph) return "";
     const src = photoFile(ph, kind);
-    const pos = ph.month_pos || ph.object_pos || "center";
+    const pos = (kind === "year") ? "center" : (ph.month_pos || ph.object_pos || "center");
     const loading = eager ? "eager" : "lazy";
     const prio = eager ? ' fetchpriority="high"' : "";
     return `<img class="photo-bg" src="./icons/${escapeHtml(src)}" alt="" loading="${loading}" decoding="async"${prio} style="object-position:${escapeHtml(pos)}">`;
@@ -381,7 +382,7 @@
       return `<div class="${cls}"><span class="n">${Number(iso.slice(-2))}</span>${lab ? `<span class="lab${mark ? " special" : ""}">${escapeHtml(lab)}</span>` : ""}</div>`;
     }).join("");
     return `<button type="button" class="mini${featured ? " featured" : ""}${photoCls}" data-go="#/m/${ym}">
-      ${photoCls ? monthPhotoImg(y, m, featured ? "card" : "thumb", !!featured) : ""}
+      ${photoCls ? monthPhotoImg(y, m, featured ? "card" : "year", !!featured) : ""}
       <div class="mtitle">${title}</div>
       <div class="dow">${WEEKDAYS.map((w) => `<span>${w}</span>`).join("")}</div>
       <div class="days">${daysHtml}</div>
