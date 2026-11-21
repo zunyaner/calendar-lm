@@ -25,21 +25,22 @@
       "年度出勤日": 248
     },
     "countsMatch": true,
-    "theme": "lu-mu-teal",
-    "paletteNote": "主题色用湖水青 #1F5F7A，取自冬日湖面的颜色。顶栏和按钮用这抹青色，白字对比度足够。",
+    "theme": "lu-mu-blue-pink",
+    "paletteNote": "主题色用雾蓝偏紫 #5C6B98，点缀浅玫瑰粉 #C9A3B5。顶栏是雾蓝到浅紫的渐变，白字对比度足够；背景是偏冷的淡蓝粉。",
     "photoNote": "图片由你提供，仅供个人使用。"
   },
   "colors": {
-    "accent": "#1F5F7A",
-    "coral": "#1F5F7A",
-    "coralDark": "#16485C",
-    "bg": "#F3F7F9",
+    "accent": "#5C6B98",
+    "coral": "#5C6B98",
+    "coralDark": "#4A5780",
+    "peach": "#C9A3B5",
+    "bg": "#F4F3F8",
     "国定": "#FFE97F",
     "休": "#FDE2E2",
     "年休": "#C6E0B4",
-    "班": "#DCE6F1",
-    "今天": "#FFD966",
-    "周末": "#F8E8E6"
+    "班": "#E0E4F0",
+    "今天": "#F4D2DA",
+    "周末": "#F4E8EE"
   },
   "quotes": [
     {

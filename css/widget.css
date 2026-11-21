@@ -1,14 +1,14 @@
 /* 锁屏壁纸预览 — 橹穆 */
 :root {
-  --red: #1F5F7A;
-  --red-soft: #2A7A96;
+  --red: #5C6B98;
+  --red-soft: #6E6A94;
   --safe-top: env(safe-area-inset-top, 0px);
   --safe-bottom: env(safe-area-inset-bottom, 0px);
 }
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 html, body {
   margin: 0; padding: 0; height: 100%;
-  background: #0A1A22; color: #fff;
+  background: #16141E; color: #fff;
   font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB",
     "Noto Sans SC", "Microsoft YaHei", sans-serif;
   overflow: hidden;
@@ -16,7 +16,7 @@ html, body {
 #stage {
   position: fixed; inset: 0;
   overflow: hidden;
-  background: #0A1A22;
+  background: #16141E;
 }
 .bg {
   position: absolute; inset: 0;
@@ -32,12 +32,12 @@ html, body {
   pointer-events: none;
   background:
     linear-gradient(180deg,
-      rgba(8, 18, 24, 0.28) 0%,
-      rgba(8, 18, 24, 0.06) 14%,
-      rgba(8, 18, 24, 0.10) 26%,
-      rgba(8, 18, 24, 0.38) 48%,
-      rgba(8, 18, 24, 0.62) 78%,
-      rgba(8, 18, 24, 0.78) 100%);
+      rgba(22, 20, 36, 0.28) 0%,
+      rgba(22, 20, 36, 0.06) 14%,
+      rgba(22, 20, 36, 0.10) 26%,
+      rgba(22, 20, 36, 0.38) 48%,
+      rgba(22, 20, 36, 0.62) 78%,
+      rgba(22, 20, 36, 0.78) 100%);
 }
 .content {
   position: relative;
@@ -80,7 +80,7 @@ html, body {
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.06em;
-  background: rgba(31, 95, 122, 0.72);
+  background: rgba(92, 107, 152, 0.72);
   border: 1px solid rgba(255, 255, 255, 0.28);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -93,9 +93,9 @@ html, body {
   margin-bottom: 8px;
   padding: 20px 22px 18px;
   border-radius: 20px;
-  background: rgba(255, 255, 255, 0.14);
-  border: 1px solid rgba(255, 255, 255, 0.28);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
+  background: rgba(244, 235, 245, 0.18);
+  border: 1px solid rgba(232, 210, 224, 0.42);
+  box-shadow: 0 10px 30px rgba(58, 54, 80, 0.28);
   backdrop-filter: blur(22px);
   -webkit-backdrop-filter: blur(22px);
   cursor: default;
@@ -148,7 +148,7 @@ html, body {
   text-align: center;
   text-decoration: none;
   color: #fff;
-  background: rgba(20, 6, 6, 0.55);
+  background: rgba(30, 28, 42, 0.55);
   border: 1px solid rgba(255, 255, 255, 0.28);
   border-radius: 999px;
   padding: 10px 8px;
@@ -159,4 +159,4 @@ html, body {
   cursor: default;
 }
 .toolbar .bar button:active,
-.toolbar .bar a:active { background: rgba(145, 16, 5, 0.7); }
+.toolbar .bar a:active { background: rgba(92, 107, 152, 0.75); }
