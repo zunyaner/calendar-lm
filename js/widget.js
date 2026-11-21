@@ -35,7 +35,7 @@
     if (d.holiday) {
       const short = d.holiday.short || d.holiday.name || "";
       const type = d.holiday.type;
-      if (type === "班") return short ? "班 · " + short : "调班上班";
+      if (type === "班") return short ? "班 · " + short : "调休上班";
       return (type || "休") + (short ? " · " + short : "");
     }
     if (d.kind === "周末") return "周末";

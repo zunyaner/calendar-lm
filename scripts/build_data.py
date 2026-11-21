@@ -667,6 +667,11 @@ def make_icons():
 
 
 def main():
+    raise SystemExit(
+        "calendar-lm now uses the official national holiday calendar.\n"
+        "Do not run this company-calendar builder against production data.\n"
+        "See data/calendar-data.json and national-2027.ics."
+    )
     quotes, holidays, events, days = load_source()
     counts = compute_counts(days)
     match = {k: counts[k] == EXPECTED_COUNTS[k] for k in EXPECTED_COUNTS}

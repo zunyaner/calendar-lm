@@ -127,21 +127,23 @@
   }
 
   /* ---------- captions ---------- */
+  function specialLabel(iso) {
+    const d = rec(iso);
+    if (d && d.special) return d.special;
+    const list = (DATA && DATA.specialDates) || [];
+    const md = iso.slice(5);
+    for (let i = 0; i < list.length; i++) {
+      const s = list[i];
+      const key = String(s.month).padStart(2, "0") + "-" + String(s.day).padStart(2, "0");
+      if (key === md) return s.label || "";
+    }
+    return "";
+  }
   function shortLabel(iso, compact) {
     const d = rec(iso);
     if (!d) return "";
-    if (d.companyEvents && d.companyEvents.length) {
-      const n = d.companyEvents[0].name;
-      if (compact) {
-        if (n.indexOf("年会") >= 0) return "年会";
-        if (n.indexOf("盘点") >= 0) return "盘点";
-        if (n.indexOf("优秀") >= 0) return "优秀";
-      }
-      return n;
-    }
     if (d.holiday) {
-      if (d.holiday.type === "班") return compact ? "班" : "调班上班";
-      if (d.holiday.type === "年休") return compact ? "年休" : "年休";
+      if (d.holiday.type === "班") return compact ? "班" : "调休上班";
       const s = d.holiday.short || "";
       return compact ? s.slice(0, 2) : s;
     }
@@ -153,18 +155,25 @@
   function monthDayLabel(iso) {
     const d = rec(iso);
     if (!d) return "";
-    // Prefer festival / solar term / company event over plain lunar
     if (d.solarTerm) return d.solarTerm;
     if (d.traditionalFestival) return d.traditionalFestival;
     if (d.gregorianFestival) return d.gregorianFestival;
-    if (d.companyEvents && d.companyEvents.length) return d.companyEvents[0].name;
     return d.label || d.lunarText || "";
   }
   function badgeText(kind) {
     if (kind === "国定" || kind === "休") return "休";
-    if (kind === "年休") return "年";
     if (kind === "班") return "班";
     return "";
+  }
+  function legendHtml(opts) {
+    const today = opts && opts.today;
+    const style = opts && opts.style ? ` style="${opts.style}"` : "";
+    return `<div class="legend"${style}>
+          <span><i style="background:var(--国定)"></i>休</span>
+          <span><i style="background:var(--班)"></i>班</span>
+          <span><i style="background:var(--周末)"></i>周末</span>
+          ${today ? `<span><i style="background:var(--今天)"></i>今天</span>` : ""}
+        </div>`;
   }
 
   /* ---------- render ---------- */
@@ -239,7 +248,7 @@
       ? [d.lunarText, d.solarTerm, d.traditionalFestival, d.gregorianFestival].filter(Boolean).join(" · ")
       : (todayInRange() ? "" : "今天不在日历范围内");
     const statusLine = d && d.holiday
-      ? `${d.holiday.type === "班" ? "调班上班" : "休息"} · ${d.holiday.name}`
+      ? `${d.holiday.type === "班" ? "调休上班" : "休息"} · ${d.holiday.name}`
       : (d && (d.kind === "周末") ? "周末" : "");
     const q = currentQuote();
 
@@ -269,14 +278,7 @@
         </section>
         ${thisMonthBlock(today)}
         <div class="sec-title">全年总览</div>
-        <div class="legend">
-          <span><i style="background:var(--国定)"></i>国定</span>
-          <span><i style="background:var(--休)"></i>休</span>
-          <span><i style="background:var(--年休)"></i>年休</span>
-          <span><i style="background:var(--班)"></i>班</span>
-          <span><i style="background:var(--周末)"></i>周末</span>
-          <span><i style="background:var(--今天)"></i>今天</span>
-        </div>
+        ${legendHtml({ today: true })}
         <div class="year-grid">${months}</div>
       </div>
     </div>`;
@@ -367,14 +369,16 @@
       if (!iso) return `<div class="cell is-muted"></div>`;
       const d = rec(iso);
       const kind = d ? d.kind : "";
-      const lab = shortLabel(iso, true);
+      const mark = specialLabel(iso);
+      const lab = mark || shortLabel(iso, true);
       const cls = [
         "cell",
         kind ? "kind-" + kind : "",
         iso === today ? "is-today" : "",
-        itemsOn(iso).length ? "has-item" : ""
+        itemsOn(iso).length ? "has-item" : "",
+        mark ? "has-special" : ""
       ].filter(Boolean).join(" ");
-      return `<div class="${cls}"><span class="n">${Number(iso.slice(-2))}</span>${lab ? `<span class="lab">${escapeHtml(lab)}</span>` : ""}</div>`;
+      return `<div class="${cls}"><span class="n">${Number(iso.slice(-2))}</span>${lab ? `<span class="lab${mark ? " special" : ""}">${escapeHtml(lab)}</span>` : ""}</div>`;
     }).join("");
     return `<button type="button" class="mini${featured ? " featured" : ""}${photoCls}" data-go="#/m/${ym}">
       ${photoCls ? monthPhotoImg(y, m, featured ? "card" : "thumb", !!featured) : ""}
@@ -402,7 +406,8 @@
       })();
       const badge = badgeText(kind);
       const lab = monthDayLabel(iso);
-      const labIsLunar = d && lab && lab === d.label && !d.solarTerm && !d.traditionalFestival && !d.gregorianFestival && !(d.companyEvents && d.companyEvents.length);
+      const mark = specialLabel(iso);
+      const labIsLunar = d && lab && lab === d.label && !d.solarTerm && !d.traditionalFestival && !d.gregorianFestival;
       const list = itemsOn(iso);
       const show = list.slice(0, 2);
       const more = list.length - show.length;
@@ -413,10 +418,12 @@
       const cls = [
         "mcell",
         kind ? "kind-" + kind : "",
-        iso === today ? "is-today" : ""
+        iso === today ? "is-today" : "",
+        mark ? "has-special" : ""
       ].filter(Boolean).join(" ");
       return `<button type="button" class="${cls}" data-day="${iso}">
         <div class="hd"><span class="n">${Number(iso.slice(-2))}</span>${badge ? `<span class="badge badge-${kind}">${badge}</span>` : ""}</div>
+        ${mark ? `<div class="mark">${escapeHtml(mark)}</div>` : ""}
         ${lab ? `<div class="lab${labIsLunar ? " lunar" : ""}">${escapeHtml(lab)}</div>` : ""}
         ${its}
       </button>`;
@@ -437,13 +444,7 @@
           <div class="month-dow">${WEEKDAYS.map((w) => `<span>${w}</span>`).join("")}</div>
           <div class="month-grid">${grid}</div>
         </div>
-        <div class="legend" style="margin-top:12px">
-          <span><i style="background:var(--国定)"></i>国定</span>
-          <span><i style="background:var(--休)"></i>休</span>
-          <span><i style="background:var(--年休)"></i>年休</span>
-          <span><i style="background:var(--班)"></i>班</span>
-          <span><i style="background:var(--周末)"></i>周末</span>
-        </div>
+        ${legendHtml({ style: "margin-top:12px" })}
       </div>
     </div>`;
     bindNav();
@@ -473,21 +474,21 @@
   }
 
   function renderSettings(r) {
-    const icsHttps = new URL("company-2027.ics", location.href).href;
+    const icsHttps = new URL("national-2027.ics", location.href).href;
     const webcal = icsHttps.replace(/^https:/, "webcal:").replace(/^http:/, "webcal:");
-    const counts = DATA.meta.counts;
+    const counts = (DATA.meta && DATA.meta.counts) || {};
     const countLines = Object.keys(counts).map((k) => `<li>${k} ${counts[k]} 天</li>`).join("");
     $app.innerHTML = `<div class="app">
       ${topbar("设置", `<button class="btn-text" data-go="#/">返回</button>`, "")}
       <div class="page settings">
         <div class="block">
           <h3>订阅与下载</h3>
-          <p>把 2027 年的休息日、调班上班日和公司活动加到 iPhone 自带的「日历」里。系统通知比网页更稳。订阅日历在 iPhone 上<strong>可能不会弹出提醒</strong>，请以日历中的全天事件为准。</p>
+          <p>把国家法定节假日和调休上班日加到 iPhone 自带的「日历」里。系统通知比网页更稳。订阅日历在 iPhone 上<strong>可能不会弹出提醒</strong>，请以日历中的全天事件为准。</p>
           <div class="actions">
             <a class="btn-primary" href="${escapeHtml(webcal)}">订阅到 iPhone 日历</a>
-            <a class="btn-ghost" href="${escapeHtml(icsHttps)}" download="company-2027.ics">下载行事历</a>
+            <a class="btn-ghost" href="${escapeHtml(icsHttps)}" download="national-2027.ics">下载节假日日历</a>
           </div>
-          <p class="hint">用 <strong>Safari</strong> 打开本页，点底部分享按钮，再选「添加到主屏幕」，就可以像 App 一样从桌面打开。安装后可离线查看日历。网页版不能在后台到点推送通知，需要提醒请订阅上方的行事历，或继续用桌面上的「小宇宙提醒」。</p>
+          <p class="hint">用 <strong>Safari</strong> 打开本页，点底部分享按钮，再选「添加到主屏幕」，就可以像 App 一样从桌面打开。安装后可离线查看日历。网页版不能在后台到点推送通知，需要提醒请订阅上方的节假日日历，或继续用桌面上的「小宇宙提醒」。</p>
         </div>
         <div class="block">
           <h3>备份我的事项</h3>
@@ -500,12 +501,11 @@
         </div>
         <div class="block">
           <h3>关于</h3>
-          <p>这是你的个人日历「橹穆」。休班颜色按公司行事历标注，农历、节气来自公开历法数据。首页文案是固定的一句。</p>
+          <p>这是你的个人日历「橹穆」。休班按国务院公布的国家法定节假日和调休安排标注，农历、节气来自公开历法数据。首页语录每 10 秒轮播一句。</p>
           <ul>
             ${countLines}
-            <li>与公司公布天数一致</li>
           </ul>
-          <p style="margin-top:8px">${DATA.meta.notes.map(escapeHtml).join("<br>")}</p>
+          <p style="margin-top:8px">${(DATA.meta.notes || []).map(escapeHtml).join("<br>")}</p>
         </div>
         <div class="block">
           <h3>锁屏壁纸预览</h3>
@@ -564,14 +564,17 @@
     const lunar = d
       ? [d.lunarText, d.solarTerm, d.traditionalFestival, d.gregorianFestival].filter(Boolean).join(" · ")
       : "";
-    const evs = (d && d.companyEvents) ? d.companyEvents : [];
-    const evLine = evs.map((e) => e.name + (e.note ? "（" + e.note + "）" : "")).join("、");
+    const mark = specialLabel(iso);
     let pill = "";
     if (holiday) {
-      const label = holiday.type === "班" ? "班 · " + holiday.name : holiday.type + " · " + holiday.name;
-      pill = `<span class="pill pill-${holiday.type}">${escapeHtml(label)}</span>`;
+      const typeLabel = holiday.type === "班" ? "班" : "休";
+      const label = typeLabel + " · " + holiday.name;
+      pill += `<span class="pill pill-${holiday.type === "班" ? "班" : "国定"}">${escapeHtml(label)}</span>`;
     } else if (kind === "周末") {
-      pill = `<span class="pill pill-周末">周末</span>`;
+      pill += `<span class="pill pill-周末">周末</span>`;
+    }
+    if (mark) {
+      pill += `<span class="pill pill-special">${escapeHtml(mark)}</span>`;
     }
     const list = itemsOn(iso);
     const listHtml = list.length
@@ -583,7 +586,7 @@
     bd.innerHTML = `<div class="sheet" role="dialog" aria-modal="true" aria-labelledby="day-title">
       <div class="grab"></div>
       <h2 id="day-title">${formatLong(iso)} 星期${weekdayName(iso)}</h2>
-      <div class="meta">${escapeHtml(lunar)}${evLine ? "<br>" + escapeHtml(evLine) : ""}</div>
+      <div class="meta">${escapeHtml(lunar)}</div>
       ${pill}
       <div id="day-items">${listHtml}</div>
       <div class="actions">
