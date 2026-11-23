@@ -6924,14 +6924,14 @@
   },
   "photos": [
     {
-      "id": "18",
+      "id": "03",
       "month": "2026-11",
-      "out": "hero-18.webp",
-      "month_out": "card-18.webp",
+      "out": "hero-03.webp",
+      "month_out": "card-03.webp",
       "object_pos": "center",
-      "month_pos": "center",
-      "thumb_out": "thumb-18.webp",
-      "year_out": "year-18.webp"
+      "month_pos": "center 28%",
+      "thumb_out": "thumb-03.webp",
+      "year_out": "year-03.webp"
     },
     {
       "id": "07",
@@ -7044,14 +7044,14 @@
       "year_out": "year-16.webp"
     },
     {
-      "id": "14",
+      "id": "18",
       "month": "2027-11",
-      "out": "hero-14.webp",
-      "month_out": "card-14.webp",
+      "out": "hero-18.webp",
+      "month_out": "card-18.webp",
       "object_pos": "center",
-      "month_pos": "center 40%",
-      "thumb_out": "thumb-14.webp",
-      "year_out": "year-14.webp"
+      "month_pos": "center",
+      "thumb_out": "thumb-18.webp",
+      "year_out": "year-18.webp"
     },
     {
       "id": "17",

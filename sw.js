@@ -1,5 +1,5 @@
 /* 橹穆 service worker — static, cache-first, relative URLs */
-const CACHE = "cal2027-lm-v11";
+const CACHE = "cal2027-lm-v12";
 /* Shell only on install. Photos are cached at runtime (cache-first).
    The page posts {type:"precache", urls:[...]} for the current-month images. */
 const ASSETS = [
